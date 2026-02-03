@@ -1,0 +1,1 @@
+print("hello world ! im checking if python setup is working! hehe")
