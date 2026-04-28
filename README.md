@@ -10,3 +10,4 @@ the goal of this repository is to document my progress and practice working with
 - python
 - jupyter notebook
 - google apps script
+- javascript
