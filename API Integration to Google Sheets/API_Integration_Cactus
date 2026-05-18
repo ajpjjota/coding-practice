@@ -1,0 +1,41 @@
+// FUNCTION IS BINNED; outages are common; better web API was found
+
+function cactusSMILES(name) {
+  const encodedName = encodeURIComponent(name);
+
+  const url = `https://cactus.nci.nih.gov/chemical/structure/${encodedName}/smiles`;
+
+  const options = {
+    method: "get",
+    muteHttpExceptions: true
+  };
+
+  const response = UrlFetchApp.fetch(url, options);
+
+  const code = response.getResponseCode();
+
+  if (code === 404) {
+    return "No Compound Found";
+  }
+
+  if (code !== 200) {
+    return `Error ${code}`;
+  }
+
+  const text = response.getContentText().trim();
+
+  if (!text) {
+    return "No SMILES Returned";
+  }
+
+  return text;
+}
+
+function cactusImage(name) {
+  const encodedName = encodeURIComponent(name);
+
+  const url = `https://cactus.nci.nih.gov/chemical/structure/${encodedName}/image`;
+
+  return url;
+
+}
